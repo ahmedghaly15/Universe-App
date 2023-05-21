@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_app/core/utils/app_texts.dart';
-import 'package:universe_app/core/utils/app_theme.dart';
-import 'package:universe_app/features/auth/presentation/views/auth_view.dart';
+
+import '/features/splash/presentation/view/splash_view.dart';
+import 'core/global/app_texts.dart';
+import 'core/global/app_theme.dart';
 
 void main() => runApp(const UniverseApp());
 
@@ -15,7 +16,7 @@ class UniverseApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppTexts.appTitle,
       theme: AppTheme.appTheme(),
-      home: const AuthView(),
+      home: const SplashView(),
     );
   }
 }
