@@ -3,11 +3,12 @@ import 'package:universe_app/core/global/app_assets.dart';
 import 'package:universe_app/core/global/app_colors.dart';
 import 'package:universe_app/core/global/app_constants.dart';
 import 'package:universe_app/core/global/app_texts.dart';
-import 'package:universe_app/features/auth/presentation/views/auth_view.dart';
+import 'package:universe_app/features/auth/presentation/view/auth_view.dart';
 
 import '../../../../core/global/app_navigator.dart';
 import '../../../../core/global/app_styles.dart';
 import '../../../../core/utils/helper.dart';
+import '../../../../core/utils/size_config.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -27,7 +28,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
 
-    Helper.setSystemUIOverlayStyle(
+    setSystemUIOverlayStyle(
       systemNavigationBarColor: AppColors.primaryColor,
       statusBarColor: AppColors.primaryColor,
       statusBarBrightness: Brightness.light,
@@ -46,6 +47,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
