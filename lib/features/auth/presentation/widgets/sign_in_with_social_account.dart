@@ -24,9 +24,15 @@ class SignInWithSocialAccount extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const SignInWay(asset: AppAssets.googleLogo),
+              SignInWay(
+                onTap: () {},
+                asset: AppAssets.googleLogo,
+              ),
               SizedBox(width: SizeConfig.screenWidth! * 0.05),
-              const SignInWay(asset: AppAssets.facebookLogo),
+              SignInWay(
+                onTap: () {},
+                asset: AppAssets.facebookLogo,
+              ),
             ],
           ),
         ],

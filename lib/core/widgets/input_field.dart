@@ -4,6 +4,7 @@ import '../global/app_colors.dart';
 import '../global/app_styles.dart';
 
 class InputField extends StatelessWidget {
+  final FocusNode focusNode;
   final String hint;
   final TextStyle? hintStyle;
   final bool? obsecure;
@@ -14,9 +15,11 @@ class InputField extends StatelessWidget {
   final String? Function(String?)? validating;
   final TextInputType keyboardType;
   final void Function(String)? onSubmit;
+  final void Function()? onEditingComplete;
 
   const InputField({
     Key? key,
+    required this.focusNode,
     required this.hint,
     this.hintStyle = AppStyles.textStyle18,
     required this.controller,
@@ -27,6 +30,7 @@ class InputField extends StatelessWidget {
     this.prefixIcon,
     this.icon,
     this.onSubmit,
+    this.onEditingComplete,
   }) : super(key: key);
 
   @override
@@ -39,6 +43,7 @@ class InputField extends StatelessWidget {
       child: TextFormField(
         key: key,
         controller: controller,
+        focusNode: focusNode,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: hintStyle,
@@ -58,6 +63,7 @@ class InputField extends StatelessWidget {
         textCapitalization: textCapitalization,
         validator: validating,
         onFieldSubmitted: onSubmit,
+        onEditingComplete: onEditingComplete,
       ),
     );
   }

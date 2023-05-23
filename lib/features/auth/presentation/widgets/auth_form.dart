@@ -26,6 +26,10 @@ class AuthForm extends StatelessWidget {
     required this.usernameController,
     required this.passwordController,
     required this.confirmPassController,
+    required this.emailFocusNode,
+    required this.passwordFocusNode,
+    required this.usernameFocusNode,
+    required this.confirmPassFocusNode,
   });
 
   final Animation<Offset> slideAnimation;
@@ -38,6 +42,11 @@ class AuthForm extends StatelessWidget {
   final TextEditingController usernameController;
   final TextEditingController passwordController;
   final TextEditingController confirmPassController;
+
+  final FocusNode emailFocusNode;
+  final FocusNode passwordFocusNode;
+  final FocusNode usernameFocusNode;
+  final FocusNode confirmPassFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +69,12 @@ class AuthForm extends StatelessWidget {
                 usernameController: usernameController,
                 slideAnimation: slideAnimation,
                 authMode: authMode,
+                emailFocusNode: emailFocusNode,
+                passwordFocusNode: passwordFocusNode,
+                confirmPassFocusNode: confirmPassFocusNode,
+                usernameFocusNode: usernameFocusNode,
               ),
+
               //======== For Adding Some Space =========
               SizedBox(height: SizeConfig.screenHeight! * 0.02),
 
@@ -73,6 +87,7 @@ class AuthForm extends StatelessWidget {
                   formKey: formKey,
                   passwordController: passwordController,
                   confirmPassController: confirmPassController,
+                  confirmPassFocusNode: confirmPassFocusNode,
                 ),
 
               //======= For Adding Some Space =======

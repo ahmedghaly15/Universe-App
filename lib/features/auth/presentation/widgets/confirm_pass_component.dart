@@ -13,6 +13,7 @@ class ConfirmPassComponent extends StatelessWidget {
     required this.passwordController,
     required this.formKey,
     required this.signUpFormValidation,
+    required this.confirmPassFocusNode,
   });
 
   final GlobalKey<FormState> formKey;
@@ -22,6 +23,7 @@ class ConfirmPassComponent extends StatelessWidget {
   final AuthMode authMode;
   final AuthViewCubit cubit;
   final Animation<Offset> slideAnimation;
+  final FocusNode confirmPassFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class ConfirmPassComponent extends StatelessWidget {
       child: SlideTransition(
         position: slideAnimation,
         child: InputField(
+          focusNode: confirmPassFocusNode,
           key: const ValueKey("confirm_password"),
           hint: "Confirm Password",
           controller: confirmPassController,

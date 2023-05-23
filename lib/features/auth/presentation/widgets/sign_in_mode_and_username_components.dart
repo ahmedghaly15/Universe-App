@@ -16,6 +16,10 @@ class SignInModeAndUsernameComponents extends StatelessWidget {
     required this.authMode,
     required this.usernameController,
     required this.slideAnimation,
+    required this.emailFocusNode,
+    required this.passwordFocusNode,
+    required this.usernameFocusNode,
+    required this.confirmPassFocusNode,
   });
 
   final AuthViewCubit cubit;
@@ -26,12 +30,18 @@ class SignInModeAndUsernameComponents extends StatelessWidget {
   final AuthMode authMode;
   final Animation<Offset> slideAnimation;
 
+  final FocusNode emailFocusNode;
+  final FocusNode passwordFocusNode;
+  final FocusNode usernameFocusNode;
+  final FocusNode confirmPassFocusNode;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         InputField(
           key: const ValueKey("email"),
+          focusNode: emailFocusNode,
           hint: "Email",
           controller: emailController,
           obsecure: false,
@@ -43,6 +53,13 @@ class SignInModeAndUsernameComponents extends StatelessWidget {
             }
             return null;
           },
+          onEditingComplete: () {
+            if (authMode == AuthMode.signIn) {
+              FocusScope.of(context).requestFocus(passwordFocusNode);
+            } else if (authMode == AuthMode.signUp) {
+              FocusScope.of(context).requestFocus(usernameFocusNode);
+            }
+          },
         ),
         //======== For Adding Some Space ==========
         SizedBox(height: SizeConfig.screenHeight! * 0.02),
@@ -51,6 +68,8 @@ class SignInModeAndUsernameComponents extends StatelessWidget {
           UsernameComponent(
             slideAnimation: slideAnimation,
             usernameController: usernameController,
+            passwordFocusNode: passwordFocusNode,
+            usernameFocusNode: usernameFocusNode,
           ),
           SizedBox(height: SizeConfig.screenHeight! * 0.02),
         ],
@@ -58,6 +77,7 @@ class SignInModeAndUsernameComponents extends StatelessWidget {
         //======== Password Input Field =========
         InputField(
           key: const ValueKey("password"),
+          focusNode: passwordFocusNode,
           hint: "Password",
           controller: passwordController,
           obsecure: cubit.passVisibility,
@@ -82,13 +102,20 @@ class SignInModeAndUsernameComponents extends StatelessWidget {
             return null;
           },
           onSubmit: (String value) {
-            if (formKey.currentState!.validate()) {
-              FocusScope.of(context).unfocus();
-              AuthViewCubit.getObject(context).userSignIn(
-                context: context,
-                email: emailController.text,
-                password: passwordController.text,
-              );
+            if (authMode == AuthMode.signIn) {
+              if (formKey.currentState!.validate()) {
+                FocusScope.of(context).unfocus();
+                AuthViewCubit.getObject(context).userSignIn(
+                  context: context,
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+              }
+            }
+          },
+          onEditingComplete: () {
+            if (authMode == AuthMode.signUp) {
+              FocusScope.of(context).requestFocus(confirmPassFocusNode);
             }
           },
         )

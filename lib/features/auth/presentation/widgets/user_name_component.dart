@@ -7,10 +7,14 @@ class UsernameComponent extends StatelessWidget {
     super.key,
     required this.slideAnimation,
     required this.usernameController,
+    required this.usernameFocusNode,
+    required this.passwordFocusNode,
   });
 
   final Animation<Offset> slideAnimation;
   final TextEditingController usernameController;
+  final FocusNode usernameFocusNode;
+  final FocusNode passwordFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +24,7 @@ class UsernameComponent extends StatelessWidget {
       child: SlideTransition(
         position: slideAnimation,
         child: InputField(
+          focusNode: usernameFocusNode,
           key: const ValueKey("username"),
           hint: "Username",
           controller: usernameController,
@@ -31,6 +36,9 @@ class UsernameComponent extends StatelessWidget {
               return "Username can't be blank";
             }
             return null;
+          },
+          onEditingComplete: () {
+            FocusScope.of(context).requestFocus(passwordFocusNode);
           },
         ),
       ),

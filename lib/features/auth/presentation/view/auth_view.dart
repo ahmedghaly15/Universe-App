@@ -24,6 +24,10 @@ class _AuthViewState extends State<AuthView> with TickerProviderStateMixin {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPassController = TextEditingController();
+  final FocusNode emailFocusNode = FocusNode();
+  final FocusNode passwordFocusNode = FocusNode();
+  final FocusNode usernameFocusNode = FocusNode();
+  final FocusNode confirmPassFocusNode = FocusNode();
 
   // Animations
   late AnimationController _slidecontroller;
@@ -63,6 +67,10 @@ class _AuthViewState extends State<AuthView> with TickerProviderStateMixin {
             usernameController: usernameController,
             passwordController: passwordController,
             confirmPassController: confirmPassController,
+            emailFocusNode: emailFocusNode,
+            passwordFocusNode: passwordFocusNode,
+            confirmPassFocusNode: confirmPassFocusNode,
+            usernameFocusNode: usernameFocusNode,
           ),
         ),
       ),

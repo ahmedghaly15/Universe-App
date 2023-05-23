@@ -17,6 +17,10 @@ class AuthViewBody extends StatelessWidget {
     required this.confirmPassController,
     required this.switchAuthMode,
     required this.authMode,
+    required this.emailFocusNode,
+    required this.passwordFocusNode,
+    required this.usernameFocusNode,
+    required this.confirmPassFocusNode,
   });
 
   final Animation<Offset> slideAnimation;
@@ -29,6 +33,11 @@ class AuthViewBody extends StatelessWidget {
   final TextEditingController usernameController;
   final TextEditingController passwordController;
   final TextEditingController confirmPassController;
+
+  final FocusNode emailFocusNode;
+  final FocusNode passwordFocusNode;
+  final FocusNode usernameFocusNode;
+  final FocusNode confirmPassFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +68,12 @@ class AuthViewBody extends StatelessWidget {
               usernameController: usernameController,
               passwordController: passwordController,
               confirmPassController: confirmPassController,
+              emailFocusNode: emailFocusNode,
+              passwordFocusNode: passwordFocusNode,
+              confirmPassFocusNode: confirmPassFocusNode,
+              usernameFocusNode: usernameFocusNode,
             ),
-            SizedBox(height: SizeConfig.screenHeight! * 0.15),
+            SizedBox(height: SizeConfig.screenHeight! * 0.13),
             const SignInWithSocialAccount(),
           ],
         ),
