@@ -5,6 +5,8 @@ import '../global/app_styles.dart';
 
 class DefaultButton extends StatelessWidget {
   final String buttonText;
+
+  final double radius;
   final double height;
   final double width;
   final void Function()? onPressed;
@@ -14,32 +16,31 @@ class DefaultButton extends StatelessWidget {
     super.key,
     required this.buttonText,
     required this.onPressed,
-    this.height = 15,
-    this.width = 130,
-    this.textStyle = AppStyles.texStyle24,
+    this.radius = 32.0,
+    this.textStyle = AppStyles.texStyle28,
+    this.height = 60,
+    this.width = double.maxFinite,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(
-          EdgeInsets.symmetric(
-            horizontal: width,
-            vertical: height,
+    return SizedBox(
+      height: height,
+      width: width,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(radius),
+            ),
           ),
         ),
-        backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
+        child: Text(
+          buttonText,
+          style: textStyle,
         ),
-      ),
-      child: Text(
-        buttonText,
-        style: textStyle,
       ),
     );
   }

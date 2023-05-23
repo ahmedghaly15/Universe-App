@@ -31,46 +31,44 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      key: key,
-      controller: controller,
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: hintStyle,
-        prefixIcon: prefixIcon,
-        prefixIconColor: AppColors.primaryColor,
-        suffixIcon: icon,
-        suffixIconColor: AppColors.primaryColor,
-        contentPadding: const EdgeInsets.all(10),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.grey,
-            width: 0,
-          ),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: AppColors.primaryColor,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(15),
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(0),
       ),
-      cursorColor: AppColors.primaryColor,
-      style: AppStyles.textStyle20,
-      obscureText: obsecure!,
-      keyboardType: keyboardType,
-      textCapitalization: textCapitalization,
-      validator: validating,
-      onFieldSubmitted: onSubmit,
+      child: TextFormField(
+        key: key,
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: hintStyle,
+          prefixIcon: prefixIcon,
+          prefixIconColor: AppColors.primaryColor,
+          suffixIcon: icon,
+          suffixIconColor: AppColors.primaryColor,
+          contentPadding: const EdgeInsets.all(16),
+          enabledBorder: buildOutlineInputBorder(Colors.white, 0),
+          focusedBorder: buildOutlineInputBorder(AppColors.primaryColor, 1.5),
+          errorBorder: buildOutlineInputBorder(Colors.redAccent, 1),
+        ),
+        cursorColor: AppColors.primaryColor,
+        style: AppStyles.textStyle20,
+        obscureText: obsecure!,
+        keyboardType: keyboardType,
+        textCapitalization: textCapitalization,
+        validator: validating,
+        onFieldSubmitted: onSubmit,
+      ),
+    );
+  }
+
+  OutlineInputBorder buildOutlineInputBorder(Color color, double width) {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        color: color,
+        width: width,
+      ),
+      borderRadius: BorderRadius.circular(0),
     );
   }
 }
