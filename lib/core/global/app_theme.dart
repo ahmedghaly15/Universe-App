@@ -7,7 +7,7 @@ import 'app_colors.dart';
 class AppTheme {
   static ThemeData appTheme() => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
-        textTheme: GoogleFonts.latoTextTheme(ThemeData.light().textTheme),
+        textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme),
         primaryColor: AppColors.primaryColor,
         appBarTheme: const AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(
