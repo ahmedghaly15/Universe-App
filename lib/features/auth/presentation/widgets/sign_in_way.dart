@@ -9,7 +9,7 @@ class SignInWay extends StatelessWidget {
   });
 
   final String asset;
-  final void Function() onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,8 @@ class SignInWay extends StatelessWidget {
         padding: const EdgeInsets.all(14.0),
         height: 60,
         width: 60,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.0),
           color: Colors.white,
         ),
         child: SvgPicture.asset(asset),

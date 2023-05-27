@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,17 +9,21 @@ import 'core/global/app_theme.dart';
 import 'core/utils/bloc_observer.dart';
 import 'core/utils/cache_helper.dart';
 import 'core/utils/service_locator.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  //===================== Observing My Bloc =====================
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   Bloc.observer = MyBlocObserver();
 
-  //===================== Initializing SharedPref =====================
   await CacheHelper.init();
 
   ServicesLocator().setupServiceLocator();
+
   runApp(const UniverseApp());
 }
 

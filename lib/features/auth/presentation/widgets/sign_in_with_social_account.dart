@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:universe_app/features/auth/presentation/view/manager/auth_view_cubit.dart';
 
 import '../../../../core/global/app_assets.dart';
 import '../../../../core/global/app_styles.dart';
@@ -8,7 +9,10 @@ import 'sign_in_way.dart';
 class SignInWithSocialAccount extends StatelessWidget {
   const SignInWithSocialAccount({
     super.key,
+    required this.cubit,
   });
+
+  final AuthViewCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class SignInWithSocialAccount extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SignInWay(
-                onTap: () {},
+                onTap: () => cubit.signInWithGoogle(),
                 asset: AppAssets.googleLogo,
               ),
               SizedBox(width: SizeConfig.screenWidth! * 0.05),

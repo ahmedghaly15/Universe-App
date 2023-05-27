@@ -4,7 +4,6 @@ import '../../../../core/global/app_styles.dart';
 import '../../../../core/utils/size_config.dart';
 import '../view/manager/auth_view_cubit.dart';
 import 'auth_form.dart';
-import 'sign_in_with_social_account.dart';
 
 class AuthViewBody extends StatelessWidget {
   const AuthViewBody({
@@ -73,8 +72,6 @@ class AuthViewBody extends StatelessWidget {
               confirmPassFocusNode: confirmPassFocusNode,
               usernameFocusNode: usernameFocusNode,
             ),
-            SizedBox(height: SizeConfig.screenHeight! * 0.13),
-            const SignInWithSocialAccount(),
           ],
         ),
       ),

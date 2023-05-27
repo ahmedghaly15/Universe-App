@@ -13,6 +13,7 @@ import '../view/manager/auth_view_states.dart';
 import 'auth_button.dart';
 import 'sign_in_mode_and_username_components.dart';
 import 'confirm_pass_component.dart';
+import 'sign_in_with_social_account.dart';
 import 'switch_auth_mode.dart';
 
 class AuthForm extends StatelessWidget {
@@ -90,24 +91,21 @@ class AuthForm extends StatelessWidget {
                   confirmPassFocusNode: confirmPassFocusNode,
                 ),
 
-              //======= For Adding Some Space =======
               SizedBox(height: SizeConfig.screenHeight! * 0.05),
-              //=========== Sign In & Up Button ===========
               AuthButton(
                 state: state,
                 authMode: authMode,
                 signInOrSignUp: signInOrSignUp,
               ),
 
-              //   SizedBox(height: SizeConfig.screenHeight! * 0.03),
-              // const SignInWithGoogleButtons(),
-
-              //========= For Adding Some Space =========
               SizedBox(height: SizeConfig.screenHeight! * 0.02),
               SwitchAuthMode(
                 authMode: authMode,
                 switchAuthMode: switchAuthMode,
               ),
+
+              SizedBox(height: SizeConfig.screenHeight! * 0.13),
+              SignInWithSocialAccount(cubit: cubit),
             ],
           ),
         );
